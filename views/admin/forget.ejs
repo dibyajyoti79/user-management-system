@@ -1,0 +1,19 @@
+<% include('../layouts/header.ejs') %>
+
+    <h1>Reset your password</h1>
+
+    <form action="" method="post">
+
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <br><br>
+        <input type="submit" value="Send Reset Link">
+
+    </form>
+
+
+    <% if(typeof message !== 'undefined' ){ %>
+        <p style="color: red;"><%= message %></p>
+    <% } %>
+
+
+ <% include('../layouts/footer.ejs') %>
