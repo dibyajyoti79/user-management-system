@@ -31,5 +31,4 @@ This is a begineer level backend project in which an user can register and login
 - delete the user
 
 
-Note : This project is only focusing for implementing the backend logic part not the designing part of frontend.
 
