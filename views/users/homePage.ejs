@@ -5,6 +5,14 @@
     <div class="text-center center-div" id="login">
         <div class="container w-25 border py-5">
             <div class="title">
+                <% if(typeof message !== 'undefined' ){ %>
+                    <% if(message === 'Something went Wrong' ){ %>
+                        <p style="color: red;"><%= message %></p>
+                    <% }else{ %>
+                        <p style="color: green;"><%= message %></p>
+
+                        <% } %> 
+                <% } %>
                 <h3 class="font-weight-bold"><%= user.name %></h3>
                 <img src="userImages/<%=user.image%>" style="border-radius: 50%; margin-top: 1em;" width="100px" height="100px" alt="<%=user.image%>">
 
@@ -34,7 +42,7 @@
                     <th style="text-align:left;" scope="row">Verified</th>
                     <td style="text-align:left;">
                         <% if(user.temp_verify===1){ %>
-                            <a href="/verify-email/<%= user._id %>" style="color: #198754;">verify</a>
+                            <a href="/send" style="color: #198754;">verify</a>
                             <% }else{ %>
                                 <p>yes</p>
                                 <% }%>

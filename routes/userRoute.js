@@ -68,7 +68,7 @@ user_route.get("/edit", auth.isLogin, userController.editLoad);
 user_route.post("/edit", upload.single("image"), userController.updateProfile);
 
 user_route.get(
-  "/verify-email/:id",
+  "/send",
   auth.isLogin,
   userController.updateEmailVerify
 );

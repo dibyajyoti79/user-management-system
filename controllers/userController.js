@@ -420,15 +420,15 @@ const updateEmailVerify = async (req, res) => {
     const user = await User.findOne({ _id: id });
     if (user) {
       if (user.is_varified === 1 && user.temp_verify === 0) {
-        res.render("resetLink", { message: "This Email is already verified" });
+        res.render("homePage", { user: user, message: "This Email is already verified" });
       } else {
         sendVerificationMail(user.name, user.temp_email, user._id);
-        res.render("resetLink", {
-          message: "Verification link send succesfully",
+        res.render("homePage", {
+          message: "Verification link send succesfully, Please check your mail",user: user
         });
       }
     } else {
-      res.render("resetLink", { message: "Something went Wrong" });
+      res.render("homePage", { user: user, message: "Something went Wrong" });
     }
   } catch (error) {
     console.log(error.message);
