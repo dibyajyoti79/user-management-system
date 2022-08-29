@@ -1,52 +1,54 @@
-<% include('../layouts/header.ejs') %>
-
-    <h3>Welcome, <%= user.name %>
-    </h3>
-
-    <table width="50%">
-        <tr>
-            <td><img style="border-radius: 50%;" width="100px" src="userImages/<%= user.image %>"
-                    alt="<%= user.image %>"></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>
-                <% if(user.temp_email !=="" ){ %>
-                    <%= user.temp_email %>
-                        <% }else{ %>
-
-                            <%= user.email %>
-                                <% } %>
-
-            </td>
-        </tr>
-        <tr>
-            <td>Mobile</td>
-            <td>
-                <%= user.mobile %>
-            </td>
-        </tr>
-        <tr>
-            <td>Verified</td>
-            <td>
-                <% if(user.temp_verify===1){ %>
-                    <a href="/verify-email/<%= user._id %>">verify</a>
-                    <% }else{ %>
-                        <p>yes</p>
-                        <% }%>
-
-            </td>
-        </tr>
-    </table>
-    <br>
-    <a href="/edit?id=<%= user._id %>">Edit</a>
-    <br>
-    <br>
-    <a href="/logout">Logout</a>
-    <br>
-    <% if(typeof message !== 'undefined' ){ %>
-        <p style="color: green;"><%= message %></p>
-    <% } %>
 
 
-    <% include('../layouts/footer.ejs') %>
+    <%- include('../layouts/header.ejs') -%>
+
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h3 class="font-weight-bold"><%= user.name %></h3>
+                <img src="userImages/<%=user.image%>" style="border-radius: 50%; margin-top: 1em;" width="100px" height="100px" alt="<%=user.image%>">
+
+            </div>
+            <table class="table table-borderless mt-2">
+                <tbody>
+                <tr>
+                    <th style="text-align:left;" scope="row">Email</th>
+                    <td style="text-align:left;">
+                        <% if(user.temp_email !=="" ){ %>
+                            <%= user.temp_email %>
+                                <% }else{ %>
+        
+                                    <%= user.email %>
+                                        <% } %>
+        
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;" scope="row">Mobile</th>
+                    <td style="text-align:left;">
+                        <%= user.mobile %>
+                    </td>
+                </tr>
+        
+                <tr>
+                    <th style="text-align:left;" scope="row">Verified</th>
+                    <td style="text-align:left;">
+                        <% if(user.temp_verify===1){ %>
+                            <a href="/verify-email/<%= user._id %>" style="color: #198754;">verify</a>
+                            <% }else{ %>
+                                <p>yes</p>
+                                <% }%>
+        
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            <a href="/edit?id=<%= user._id %>"><button type="submit" class="btn btn-success rounded-pill">Edit</button></a>
+            <a href="/logout"><button type="submit" class="btn btn-success rounded-pill">Logout</button>
+            </a>
+
+        
+        </div>
+    </div>
+
+ <%- include('../layouts/footer.ejs') -%>

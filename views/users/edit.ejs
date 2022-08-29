@@ -1,24 +1,33 @@
-<% include('../layouts/header.ejs') %>
+<%- include('../layouts/header.ejs') -%>
 
-<img src="userImages/<%=user.image%>" width="100px" height="100px" alt="<%=user.image%>">
+<div class="text-center center-div" id="login">
+    <div class="container w-25 border py-5">
+        <div class="title">
+            <img src="userImages/<%=user.image%>" style="border-radius: 50%;" width="100px" height="100px" alt="<%=user.image%>">
+            <% if(typeof message !== 'undefined' ){ %>
+                <p style="color: red;"><%= message %></p>
+            <% } %>
+        </div>
+        <form action="" method="post" enctype="multipart/form-data" class="pt-3">
+            <div class="form-group">
+                <input type="file" name="image" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="user_id" value="<%=user._id%>">
+            </div>
+            <div class="form-group">
+                <input type="text" name="name" value="<%=user.name%>" class="form-control" placeholder="Enter Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" value="<%=user.email%>" class="form-control" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="mno" value="<%=user.mobile%>" class="form-control" placeholder="Enter Mobile" required>
+            </div>
+            <button type="submit" class="btn btn-success rounded-pill">Update Profile</button>
+        </form>
+         
+    </div>
+</div>
 
-<form action="" method="post" enctype="multipart/form-data">
-    
-    <input type="file" name="image">
-    <input type="hidden" name="user_id" value="<%=user._id%>">
-    <br><br>
-    <input type="text" name="name" value="<%=user.name%>" placeholder="Enter Name" required>
-    <br><br>
-    <input type="email" name="email" value="<%=user.email%>" placeholder="Enter Email" required>
-    <br><br>
-    <input type="number" name="mno" value="<%=user.mobile%>" placeholder="Enter Mobile" required>
-    <br><br>
-    <input type="submit" value="Update Profile">
-
-</form>
-
-<% if(typeof message !== 'undefined' ){ %>
-    <p style="color: red;"><%= message %></p>
-<% } %>
-
-<% include('../layouts/footer.ejs') %>
+<%- include('../layouts/footer.ejs') -%>

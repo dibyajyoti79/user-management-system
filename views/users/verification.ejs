@@ -1,19 +1,26 @@
-<% include('../layouts/header.ejs') %>
 
-    <h1>Verify Email</h1>
+ <%- include('../layouts/header.ejs') -%>
 
-    <form action="" method="post">
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h2 class="font-weight-bold">Verify Email</h2>
+                <% if(typeof message !== 'undefined' ){ %>
+                    <% if(message === 'Please enter correct email' ){ %>
+                        <p style="color: red;"><%= message %></p>
+                    <% }else{ %>
+                        <p style="color: green;"><%= message %></p>
+                        <% } %> 
+                <% } %>
+            </div>
+            <form action="" method="post" class="pt-3">
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <button type="submit" class="btn btn-success rounded-pill">Send Verification Link</button>
+            </form>
+            
+        </div>
+    </div>
 
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <br><br>
-        <input type="submit" value="Send Verification Link">
-
-    </form>
-
-
-    <% if(typeof message !== 'undefined' ){ %>
-        <p style="color: red;"><%= message %></p>
-    <% } %>
-
-
- <% include('../layouts/footer.ejs') %>
+ <%- include('../layouts/footer.ejs') -%>

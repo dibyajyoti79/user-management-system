@@ -79,8 +79,8 @@ const insertUser = async (req, res) => {
     });
 
     if (exists) {
-      res.render("alreadyExists", {
-        message: "This email or mobil number is already Exists",
+      res.render("registration", {
+        message: "This email or mobile number is already Exists",
       });
       return;
     }
@@ -108,7 +108,13 @@ const insertUser = async (req, res) => {
 const verifyMail = async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.query.id });
-    const email = user.temp_email;
+    let email;
+    if(user.temp_email !== ""){
+      email = user.temp_email;
+    }else{
+      email = user.email;
+    }
+    
     const updateInfo = await User.updateOne(
       { _id: req.query.id },
       { $set: { is_varified: 1, email: email, temp_email: "", temp_verify: 0 } }
@@ -207,7 +213,7 @@ const forgetVerify = async (req, res) => {
           { $set: { token: rString } }
         );
         sendPasswordResetMail(userData.name, userData.email, rString);
-        res.render("resetLink", {
+        res.render("forget", {
           message: "Please Check your mail to reset your password",
         });
       }
@@ -301,7 +307,7 @@ const sendVeificationLink = async (req, res) => {
     const userData = await User.findOne({ email: email });
     if (userData) {
       sendVerificationMail(userData.name, userData.email, userData._id);
-      res.render("resetLink", {
+      res.render("verification", {
         message: "Verification mail send successfully, Please check your mail.",
       });
     } else {

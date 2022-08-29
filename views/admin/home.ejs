@@ -1,30 +1,36 @@
-<% include('../layouts/header.ejs') %>
+    <%- include('../layouts/header.ejs') -%>
 
-    <h3>Welcome, <%= admin.name %>
-    </h3>
-    <a href="/admin/dashboard">Dashboard</a>
-    <br><br>
-    <table width="50%">
-        <tr>
-            <td><img style="border-radius: 50%;" width="100px" src="/userImages/<%= admin.image %>"
-                    alt="<%= admin.image %>"></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>
-                <%= admin.email %>
-            </td>
-        </tr>
-        <tr>
-            <td>Mobile</td>
-            <td>
-                <%= admin.mobile %>
-            </td>
-        </tr>
-     
-    </table>
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h3 class="font-weight-bold"><%= admin.name %></h3>
+                <img src="userImages/<%= admin.image %>" style="border-radius: 50%; margin-top: 1em;" width="100px" height="100px" alt="<%= admin.image %>">
 
-  
-    <a href="/admin/logout">Logout</a>
+            </div>
+            <table class="table table-borderless mt-2">
+                <tbody>
+                <tr>
+                    <th style="text-align:left;" scope="row">Email</th>
+                    <td style="text-align:left;">
+                        <%= admin.email %>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:left;" scope="row">Mobile</th>
+                    <td style="text-align:left;">
+                        <%= admin.mobile %>
+                    </td>
+                </tr>
 
-    <% include('../layouts/footer.ejs') %>
+            </tbody>
+            </table>
+            <a href="/admin/dashboard"><button type="submit" class="btn btn-success rounded-pill">Dashboard</button></a>
+
+            <a href="/admin/logout"><button type="submit" class="btn btn-success rounded-pill">Logout</button>
+            </a>
+
+        
+        </div>
+    </div>
+
+ <%- include('../layouts/footer.ejs') -%>

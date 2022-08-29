@@ -1,24 +1,34 @@
-<% include('../layouts/header.ejs') %>
+<%- include('../layouts/header.ejs') -%>
 
-    <h1>Login</h1>
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h2 class="font-weight-bold">Login</h2>
+                <% if(typeof message !== 'undefined' ){ %>
+                    <% if(message === 'Please verify your email' ){ %>
+                        <p style="color: red;">Please <a style="color: #198754;" href="/verification">verify</a> your email</p>
+                    <% }else{ %>
+                        <p style="color: red;"><%= message %></p>
+                        <% } %> 
+                <% } %>
+            </div>
+            <form action="/login" method="POST" class="pt-3">
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                </div>
+                <button type="submit" class="btn btn-success rounded-pill">Login</button>
+            </form>
+                <div class="message">
+                    <p>Forget Password ? <a href="/forget">click here</a></p>
+                    <p>Don't Have an Account ? <a href="/register">click here</a></p>
+                </div>
+                
+        
+           
+        </div>
+    </div>
 
-    <form action="/login" method="post">
-
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <br><br>
-        <input type="password" name="password" placeholder="Enter Password" required>
-        <br><br>
-        <input type="submit" value="Login">
-
-    </form>
-
-
-    <% if(typeof message !== 'undefined' ){ %>
-        <p style="color: red;"><%= message %></p>
-    <% } %>
-
-    <a href="/forget">Forget Password</a>
-
-    <a href="/verification">Send Verification Link</a>
-
- <% include('../layouts/footer.ejs') %>
+ <%- include('../layouts/footer.ejs') -%>

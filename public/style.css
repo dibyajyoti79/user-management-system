@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('/assests/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.center-div{
+    padding-top: 5%;
+}
+
+.btn.btn-success{
+    padding: .4em 2em;
+}
+
+form{
+    padding: 1em 2em;
+}
+
+.form-control{
+    margin-top: 1em;
+}
+
+button{
+    margin-top: 1.5em;
+}
+
+.message>p{
+    text-align: left;
+    padding-left:3em;
+    font-size: .8em;
+    color: gray;
+}
+.message>p>a{
+    color: #198754;
+}
+
+.title>p{
+    margin-bottom: 0;
+}

@@ -1,22 +1,28 @@
-<% include('../layouts/header.ejs') %>
 
-    <h1>Admin Login</h1>
+ <%- include('../layouts/header.ejs') -%>
 
-    <form action="" method="post">
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h2 class="font-weight-bold">Admin Login</h2>
+                <% if(typeof message !== 'undefined' ){ %>
+                    <p style="color: red;"><%= message %></p>
+                <% } %>
+            </div>
+            <form action="" method="POST" class="pt-3">
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                </div>
+                <button type="submit" class="btn btn-success rounded-pill">Login</button>
+            </form>
+                <div class="message">
+                    <p>Forget Password ? <a href="/admin/forget">click here</a></p>
+                </div>
+                
+        </div>
+    </div>
 
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <br><br>
-        <input type="password" name="password" placeholder="Enter Password" required>
-        <br><br>
-        <input type="submit" value="Login">
-
-    </form>
-
-    <a href="/admin/forget">Forget Password</a>
-
-    <% if(typeof message !== 'undefined' ){ %>
-        <p style="color: red;"><%= message %></p>
-    <% } %>
-
-    
- <% include('../layouts/footer.ejs') %>
+ <%- include('../layouts/footer.ejs') -%>

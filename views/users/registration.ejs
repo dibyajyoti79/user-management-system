@@ -1,26 +1,44 @@
-<% include('../layouts/header.ejs') %>
 
-    <h1>User Registration Form</h1>
+ <%- include('../layouts/header.ejs') -%>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h2 class="font-weight-bold">Register</h2>
+                <% if(typeof message !== 'undefined' ){ %>
+                    <% if(message === 'This email or mobile number is already Exists' ){ %>
+                        <p style="color: red;"><%= message %></p>
+                    <% }else{ %>  
+                        <p style="color: green;"><%= message %></p>
+                    <% } %> 
+                    
+                <% } %>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data" class="pt-3">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="mno" class="form-control" placeholder="Enter Mobile" required>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="image" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                </div>
+                <button type="submit" class="btn btn-success rounded-pill">Register</button>
+            </form>
+                <div class="message">
+                    <p>Already Have an Account ? <a href="/login">click here</a></p>
+                </div>
+                
+        
+           
+        </div>
+    </div>
 
-        <input type="text" name="name" placeholder="Enter Name" required>
-        <br><br>
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <br><br>
-        <input type="text" name="mno" placeholder="Enter Mobile" required>
-        <br><br>
-        <input type="file" name="image" required>
-        <br><br>
-        <input type="password" name="password" placeholder="Enter Password" required>
-        <br><br>
-        <input type="submit" value="Register">
-
-    </form>
-
-
-    <% if(typeof message !== 'undefined' ){ %>
-        <p style="color: green;"><%= message %></p>
-    <% } %>
-
- <% include('../layouts/footer.ejs') %>
+ <%- include('../layouts/footer.ejs') -%>

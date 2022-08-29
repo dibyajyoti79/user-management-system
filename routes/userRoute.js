@@ -17,6 +17,7 @@ user_route.set("views", "./views/users");
 
 // Set static path
 user_route.use(express.static("public"));
+user_route.use(express.static(path.join(__dirname, "../public/assests")));
 
 // For uploading files to the server
 const storage = multer.diskStorage({
